@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Comment {
-
+    
     @EmbeddedId
     private CommentId pk;
     @Column(length = 5000)
