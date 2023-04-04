@@ -2,6 +2,8 @@ package com.freshvotes.freshvotes.config;
 
 import jakarta.servlet.Filter;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.Builder;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -16,6 +18,7 @@ import org.springframework.security.config.annotation.web.WebSecurityConfigurer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.web.SecurityFilterChain;
@@ -26,6 +29,10 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    @Autowired
+    private UserDetailsService userDetailsService;
+
 
    /* @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;*/
@@ -61,14 +68,16 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(ObjectPostProcessor<Object> objectPostProcessor) throws Exception {
+    public AuthenticationManager authenticationManager() throws Exception {
+        ObjectPostProcessor<Object> objectPostProcessor = new ObjectPostProcessor<Object>() {
+            @Override
+            public <O> O postProcess(O object) {
+                return object;
+            }
+        };
         return new AuthenticationManagerBuilder(objectPostProcessor)
-                .inMemoryAuthentication()
-                .withUser("Nikhil@07@18")
-                .password(bCryptPasswordEncoder().encode("welcome@123"))
-                .roles("USER")
-                .and()
-                .and()
-                .build();
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(bCryptPasswordEncoder())
+                .and().build();
     }
 }
