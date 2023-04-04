@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <title>Login Form</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+		form {
+			width: 300px;
+			margin: auto;
+			padding-top: 50px;
+		}
+
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		button[type=submit] {
+			width: 100%;
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button[type=submit]:hover {
+			background-color: #45a049;
+		}
+
+		.container {
+			padding: 16px;
+		}
+
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+
+
+
+
+    </style>
+</head>
+<body>
+<form action="" method="post">
+    <div class="container">
+        <h2>Login Form</h2>
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <div class="container text-center">
+            <button type="button" onclick="login()">Login</button>
+        </div>
+    </div>
+    <div class="container" style="background-color:#f1f1f1">
+        <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+</form>
+
+<script>
+		function login() {
+			// Get the values entered by the user
+			var username = document.getElementById("username").value;
+			var password = document.getElementById("password").value;
+
+			// Check if the username and password fields are not empty
+			if (username !== "" && password !== "") {
+				document.getElementById("message").innerHTML = "Login successful!";
+			} else {
+				document.getElementById("message").innerHTML = "Please enter a valid username and password.";
+			}
+		}
+
+
+
+
+</script>
+
+<div id="message"></div>
+</body>
+</html>
