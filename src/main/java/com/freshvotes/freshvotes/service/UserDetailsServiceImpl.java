@@ -1,5 +1,8 @@
 package com.freshvotes.freshvotes.service;
 
+//import com.freshvotes.freshvotes.config.CustomSecurityUser;
+
+import com.freshvotes.freshvotes.config.CustomSecurityUser;
 import com.freshvotes.freshvotes.domain.User;
 import com.freshvotes.freshvotes.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         if (user == null)
             throw new UsernameNotFoundException("Invalid Username and password");
-        return null;
+        return new CustomSecurityUser(user);
     }
 }
