@@ -1,10 +1,9 @@
 package com.freshvotes.freshvotes.config;
 
+import com.freshvotes.freshvotes.domain.Authority;
 import com.freshvotes.freshvotes.domain.User;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
 import java.util.Set;
 
 public class CustomSecurityUser extends User implements UserDetails {
@@ -21,6 +20,11 @@ public class CustomSecurityUser extends User implements UserDetails {
     }
 
     @Override
+    public Set<Authority> getAuthorities() {
+        return super.getAuthorities();
+    }
+
+    @Override
     public String getPassword() {
         return super.getPassword();
     }
@@ -28,11 +32,6 @@ public class CustomSecurityUser extends User implements UserDetails {
     @Override
     public String getUsername() {
         return super.getUsername();
-    }
-
-    @Override
-    public Set<Authority> getAuthorities() {
-        return super.getAuthorities();
     }
 
     @Override

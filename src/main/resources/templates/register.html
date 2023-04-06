@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="">
+<head>
+    <title>FreshVotes Login</title>
+</head>
+<body>
+<h2>Register for an account</h2>
+
+<form action="" method="post">
+    Name :: <input type="text" th:field="${user.name}"/><br/>
+    Email Address :: <input type="text" th:field="${user.username}"/> <br/>
+    Password :: <input type="password" th:field="${user.password}"/> <br/>
+    Confirm Password :: <input type="password" id="confirmPassword"/> <br/><br/>
+    <button type="submit">Create Account</button>
+
+</form>
+</body>
+</html>

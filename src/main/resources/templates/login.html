@@ -48,6 +48,13 @@
 
 
 
+
+
+
+
+
+
+
     </style>
 </head>
 <body>
@@ -60,7 +67,8 @@
         <label for="password"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
         <div class="container text-center">
-            <button type="button" onclick="login()">Login</button>
+            <button type="submit" onclick="login()">Login</button>
+            <button type="button" class="btn" id="createAccount">Create Account</button>
         </div>
     </div>
     <div class="container" style="background-color:#f1f1f1">
@@ -68,6 +76,25 @@
     </div>
 </form>
 
+<script
+        src="jquery-3.6.3.min.js"
+
+></script>
+<script type="text/javascript">
+    $(function (){
+$("#createAccount").click(function(){
+
+
+window.location.href="/register;
+});
+
+    });
+
+
+
+
+
+</script>
 <script>
 		function login() {
 			// Get the values entered by the user
@@ -81,6 +108,13 @@
 				document.getElementById("message").innerHTML = "Please enter a valid username and password.";
 			}
 		}
+
+
+
+
+
+
+
 
 
 

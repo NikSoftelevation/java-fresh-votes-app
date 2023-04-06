@@ -46,6 +46,7 @@ public class SecurityConfig {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/")
+                .permitAll().requestMatchers("/register")
                 .permitAll()
                 .requestMatchers("/admin/**")
                 .hasRole("ADMIN")
