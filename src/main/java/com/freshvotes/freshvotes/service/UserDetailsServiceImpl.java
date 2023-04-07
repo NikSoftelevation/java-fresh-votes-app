@@ -1,7 +1,5 @@
 package com.freshvotes.freshvotes.service;
 
-//import com.freshvotes.freshvotes.config.CustomSecurityUser;
-
 import com.freshvotes.freshvotes.config.CustomSecurityUser;
 import com.freshvotes.freshvotes.domain.User;
 import com.freshvotes.freshvotes.repository.UserRepository;
