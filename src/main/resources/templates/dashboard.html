@@ -17,22 +17,24 @@
             </form>
         </div>
     </div>
-    <div th:if="${products!=null}">
-        <div class="row">
-            <div class="col">
-                <h1>Products</h1>
+    <div class="jumbotron">
+        <div th:if="${products!=null}">
+            <div class="row">
+                <div class="col">
+                    <h2>Products</h2>
+                </div>
             </div>
-        </div>
-        <div class="row" th:each="product : ${products}">
-            <div class="col">
-                <a th:href="@{/products/{productId}(productId=${product.id})}" th:text="${product.name}"></a>
+            <div class="row" th:each="product : ${products}">
+                <div class="col">
+                    <a th:href="@{/products/{productId}(productId=${product.id})}" th:text="${product.name}"></a>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <form action="" method="post">
+            <form action="/products" method="post">
                 <button class="btn btn-primary" id="createProduct">Create Product</button>
             </form>
         </div>
