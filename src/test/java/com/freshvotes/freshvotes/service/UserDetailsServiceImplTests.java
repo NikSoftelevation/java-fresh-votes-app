@@ -6,7 +6,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.not;
 
-
 public class UserDetailsServiceImplTests {
 
     @Test
