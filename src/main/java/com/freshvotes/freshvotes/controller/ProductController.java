@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -25,8 +26,10 @@ public class ProductController {
     private ProductRepository productRepository;
 
     @GetMapping("/products")
-    public String getProducts(ModelMap model) {
-        return "product";
+    public String getProducts(ModelMap model, @AuthenticationPrincipal User user) {
+        List<Product> products = productRepository.findByUser(user);
+        model.put("products", products);
+        return "products";
     }
 
     @GetMapping("/products/{productId}")
